@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diabetes Risk Predictor</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>Diabetes Risk Predictor</h1>
+    <p class="subtitle">Answer a few questions to see your estimated diabetes risk level.</p>
+
+    {% if error %}
+      <div class="error">{{ error }}</div>
+    {% endif %}
+
+    <form method="POST" action="/">
+      <div class="field">
+        <label for="age">Age (years)</label>
+        <input type="number" id="age" name="age" min="18" max="100" required>
+      </div>
+
+      <div class="field">
+        <label for="sex">Sex</label>
+        <select id="sex" name="sex" required>
+          <option value="" disabled selected>Select</option>
+          <option value="1">Male</option>
+          <option value="0">Female</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="bmi">BMI</label>
+        <input type="number" id="bmi" name="bmi" min="10" max="80" step="0.1" required>
+      </div>
+
+      <div class="field">
+        <label for="gen_hlth">General health</label>
+        <select id="gen_hlth" name="gen_hlth" required>
+          <option value="" disabled selected>Select</option>
+          <option value="1">Excellent</option>
+          <option value="2">Very good</option>
+          <option value="3">Good</option>
+          <option value="4">Fair</option>
+          <option value="5">Poor</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="high_bp">High blood pressure?</label>
+        <select id="high_bp" name="high_bp" required>
+          <option value="" disabled selected>Select</option>
+          <option value="1">Yes</option>
+          <option value="0">No</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="high_chol">High cholesterol?</label>
+        <select id="high_chol" name="high_chol" required>
+          <option value="" disabled selected>Select</option>
+          <option value="1">Yes</option>
+          <option value="0">No</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="phys_activity">Physical activity in the last 30 days?</label>
+        <select id="phys_activity" name="phys_activity" required>
+          <option value="" disabled selected>Select</option>
+          <option value="1">Yes</option>
+          <option value="0">No</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="smoker">Smoked at least 100 cigarettes in your life?</label>
+        <select id="smoker" name="smoker" required>
+          <option value="" disabled selected>Select</option>
+          <option value="1">Yes</option>
+          <option value="0">No</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="heart_disease">Heart disease or heart attack?</label>
+        <select id="heart_disease" name="heart_disease" required>
+          <option value="" disabled selected>Select</option>
+          <option value="1">Yes</option>
+          <option value="0">No</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="diff_walk">Difficulty walking or climbing stairs?</label>
+        <select id="diff_walk" name="diff_walk" required>
+          <option value="" disabled selected>Select</option>
+          <option value="1">Yes</option>
+          <option value="0">No</option>
+        </select>
+      </div>
+
+      <button type="submit">Check my risk</button>
+    </form>
+
+    {% if result %}
+      <div class="result {{ result.level | lower }}">
+        <h2>Risk level: {{ result.level }}</h2>
+        <p>Risk score: {{ result.score }} / 100</p>
+      </div>
+    {% endif %}
+
+    <p class="disclaimer">
+      This tool is for awareness only and is not a medical diagnosis.
+      Please consult a doctor for any health concerns.
+    </p>
+  </div>
+</body>
+</html>
