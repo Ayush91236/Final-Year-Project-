@@ -1,4 +1,5 @@
 # Diabetes Risk Predictor
+https://final-year-project-ryfu.onrender.com
 
 A web app that estimates a person's diabetes risk level (Low / Moderate / High) from basic health and lifestyle information. Built as a final year project (B.Tech CSE, AI/ML).
 
