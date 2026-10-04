@@ -1,5 +1,7 @@
 # Diabetes Risk Predictor
-https://final-year-project-ryfu.onrender.com
+
+**Live demo:** https://final-year-project-ryfu.onrender.com
+*Note: on the free hosting plan the first load may take up to a minute.*
 
 A web app that estimates a person's diabetes risk level (Low / Moderate / High) from basic health and lifestyle information. Built as a final year project (B.Tech CSE, AI/ML).
 
